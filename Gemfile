@@ -48,7 +48,7 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-3-stable'
 gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', branch: '2-3-stable'
 
 # Use Heroku Gem
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 
 # Use Spree Subscriptions 2.3
 gem 'spree_subscriptions', github: 'nebulab/spree-subscriptions', branch: '2-3-stable'
