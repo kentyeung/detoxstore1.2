@@ -10,6 +10,14 @@ GIT
       spree_frontend (~> 2.3.0)
 
 GIT
+  remote: git://github.com/cgservices/spree_minicart.git
+  revision: 1dbb558633f2729d7c8f838bd816ce219b7d629b
+  branch: 2-3-stable
+  specs:
+    spree_minicart (1.1.4)
+      spree_core (~> 2.3.0)
+
+GIT
   remote: git://github.com/gpongelli/spree-account-recurring.git
   revision: 81ddffd3ba09b7ceebd0bd2930574101421377e2
   branch: 2-3-stable
@@ -361,6 +369,7 @@ DEPENDENCIES
   spree_auth_devise!
   spree_bootstrap_frontend!
   spree_gateway!
+  spree_minicart!
   spree_subscriptions!
   spring
   turbolinks

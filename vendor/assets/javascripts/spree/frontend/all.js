@@ -11,3 +11,4 @@
 //= require_tree .
 //= require spree/frontend/spree_subscriptions
 //= require spree/frontend/spree_account_recurring
+//= require store/spree_minicart

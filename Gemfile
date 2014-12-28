@@ -58,3 +58,6 @@ gem 'spree_account_recurring', github: 'gpongelli/spree-account-recurring', bran
 
 # Use Spree Payment Gateway 2.3
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-3-stable'
+
+# Use spree minicart 2.3
+gem 'spree_minicart', github: 'cgservices/spree_minicart', branch: '2-3-stable'
