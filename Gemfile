@@ -54,7 +54,7 @@ gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', 
 gem 'spree_subscriptions', github: 'nebulab/spree-subscriptions', branch: '2-3-stable'
 
 # Use Spree Account recurring 2.3
-gem 'spree_account_recurring', github: 'gpongelli/spree-account-recurring', branch: '2-3-stable'
+# gem 'spree_account_recurring', github: 'gpongelli/spree-account-recurring', branch: '2-3-stable'
 
 # Use Spree Payment Gateway 2.3
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-3-stable'

@@ -10,4 +10,3 @@
 
 //= require_tree .
 //= require spree/backend/spree_subscriptions
-//= require spree/backend/spree_account_recurring
