@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223172538) do
+ActiveRecord::Schema.define(version: 20150105235753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,6 +276,7 @@ ActiveRecord::Schema.define(version: 20141223172538) do
     t.boolean  "considered_risky",                                           default: false
     t.string   "guest_token"
     t.integer  "state_lock_version",                                         default: 0,       null: false
+    t.integer  "subscription_id"
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
@@ -767,29 +768,18 @@ ActiveRecord::Schema.define(version: 20141223172538) do
   add_index "spree_stores", ["default"], name: "index_spree_stores_on_default", using: :btree
   add_index "spree_stores", ["url"], name: "index_spree_stores_on_url", using: :btree
 
-  create_table "spree_subscription_events", force: true do |t|
-    t.string   "event_id"
-    t.integer  "subscription_id"
-    t.string   "request_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.text     "response"
+  create_table "spree_subscription_intervals", force: true do |t|
+    t.string   "name"
+    t.integer  "times"
+    t.integer  "time_unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "spree_subscription_events", ["event_id"], name: "index_spree_subscription_events_on_event_id", using: :btree
-  add_index "spree_subscription_events", ["subscription_id"], name: "index_spree_subscription_events_on_subscription_id", using: :btree
-
-  create_table "spree_subscriptions", force: true do |t|
-    t.integer  "plan_id"
-    t.string   "email"
-    t.integer  "user_id"
-    t.datetime "subscribed_at"
-    t.datetime "unsubscribed_at"
+  create_table "spree_subscription_intervals_products", id: false, force: true do |t|
+    t.integer "product_id"
+    t.integer "subscription_interval_id"
   end
-
-  add_index "spree_subscriptions", ["plan_id"], name: "index_spree_subscriptions_on_plan_id", using: :btree
-  add_index "spree_subscriptions", ["subscribed_at"], name: "index_spree_subscriptions_on_subscribed_at", using: :btree
-  add_index "spree_subscriptions", ["unsubscribed_at"], name: "index_spree_subscriptions_on_unsubscribed_at", using: :btree
 
   create_table "spree_tax_categories", force: true do |t|
     t.string   "name"
@@ -909,21 +899,22 @@ ActiveRecord::Schema.define(version: 20141223172538) do
   add_index "spree_users", ["spree_api_key"], name: "index_spree_users_on_spree_api_key", using: :btree
 
   create_table "spree_variants", force: true do |t|
-    t.string   "sku",                                      default: "",    null: false
-    t.decimal  "weight",          precision: 8,  scale: 2, default: 0.0
-    t.decimal  "height",          precision: 8,  scale: 2
-    t.decimal  "width",           precision: 8,  scale: 2
-    t.decimal  "depth",           precision: 8,  scale: 2
+    t.string   "sku",                                       default: "",    null: false
+    t.decimal  "weight",           precision: 8,  scale: 2, default: 0.0
+    t.decimal  "height",           precision: 8,  scale: 2
+    t.decimal  "width",            precision: 8,  scale: 2
+    t.decimal  "depth",            precision: 8,  scale: 2
     t.datetime "deleted_at"
-    t.boolean  "is_master",                                default: false
+    t.boolean  "is_master",                                 default: false
     t.integer  "product_id"
-    t.decimal  "cost_price",      precision: 10, scale: 2
+    t.decimal  "cost_price",       precision: 10, scale: 2
     t.integer  "position"
     t.string   "cost_currency"
-    t.boolean  "track_inventory",                          default: true
+    t.boolean  "track_inventory",                           default: true
     t.integer  "tax_category_id"
     t.datetime "updated_at"
     t.integer  "issues_number"
+    t.decimal  "subscribed_price", precision: 8,  scale: 2
   end
 
   add_index "spree_variants", ["deleted_at"], name: "index_spree_variants_on_deleted_at", using: :btree

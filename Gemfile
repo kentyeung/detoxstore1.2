@@ -51,10 +51,12 @@ gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', 
 # gem 'rails_12factor', group: :production
 
 # Use Spree Subscriptions 2.3
-gem 'spree_subscriptions', github: 'nebulab/spree-subscriptions', branch: '2-3-stable'
+# gem 'spree_subscriptions', github: 'nebulab/spree-subscriptions', branch: '2-3-stable'
 
 # Use Spree Account recurring 2.3
 # gem 'spree_account_recurring', github: 'gpongelli/spree-account-recurring', branch: '2-3-stable'
+# use Spree subscribe/save 2.3
+gem 'spree_subscribe', github: 'fattymiller/spree-subscribe', branch: 'rails-4_spree-2-3'
 
 # Use Spree Payment Gateway 2.3
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-3-stable'
